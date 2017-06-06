@@ -1,11 +1,16 @@
 const DOM = React.DOM;
 
 const Image = (props) => (
-  DOM.img({ ... props }, null)
+  DOM.img({
+    src: props.src,
+    width: props.width,
+    height: props.height,
+    alt: props.alt
+    }, null)
 );
 
-const TextBox = ({ description }) => (
-  DOM.span(null, description)
+const TextBox = (props) => (
+  DOM.span(null, props.children)
 );
 
 class BlogItem extends React.Component {
@@ -13,7 +18,7 @@ class BlogItem extends React.Component {
     return (
       <div>
         <Image src={this.props.src} />
-        <TextBox description={this.props.text} />
+        <TextBox>{this.props.text}</TextBox>
       </div>
     )
   }
@@ -25,31 +30,34 @@ class BlogList extends React.Component {
       null,
       _.map(
         this.props.items,
-        (item, key) => (
-          <li key={key}><BlogItem src={item.src} text={item.text} /></li>
+        (item) => (
+          <li key={item.id}><BlogItem src={item.src} text={item.text} /></li>
         )
       )
     )
   }
 }
 
-const blog_items = [
+const blogItems = [
   {
     src: 'http://lorempixel.com/200/200',
-    text: 'Blog 1'
+    text: 'Blog 1',
+    id: 1
   },
   {
     src: 'http://lorempixel.com/200/100',
-    text: 'Blog 2'
+    text: 'Blog 2',
+    id: 2
   },
   {
     src: 'http://lorempixel.com/200/50',
-    text: 'Blog 3'
+    text: 'Blog 3',
+    id: 3
   }
 
 ];
 
 ReactDOM.render(
-  <BlogList items={ blog_items } />,
+  <BlogList items={ blogItems } />,
   document.getElementById('app')
 );
