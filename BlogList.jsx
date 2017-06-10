@@ -2,6 +2,37 @@ const { DOM, PropTypes } = React;
 
 const { bind } = _;
 
+class LoremPixelImage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <Image
+        src={this.props.src}
+        width={(Number(this.props.src.split('/')[3]) || this.props.width)}
+        height={(Number(this.props.src.split('/')[4]) || this.props.height)}
+        alt={this.props.alt}
+      />
+    )
+  }
+}
+
+LoremPixelImage.defaultProps = {
+  src: 'http://lorempixel.com/50/50',
+  width: 50,
+  height: 50,
+  alt: 'Lorem Ipsum'
+}
+
+LoremPixelImage.propTypes = {
+  src: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  alt: PropTypes.string
+}
+
 class Image extends React.Component {
   constructor(props) {
     super(props);
@@ -11,19 +42,12 @@ class Image extends React.Component {
     return(
       DOM.img({
         src: this.props.src,
-        width: (this.props.src.split('/')[3] || this.props.width),
-        height: (this.props.src.split('/')[4] || this.props.height),
+        width: this.props.width,
+        height: this.props.height,
         alt: this.props.alt
       }, null)
     )
   }
-}
-
-Image.defaultProps = {
-  src: 'http://lorempixel.com/50/50',
-  width: 50,
-  height: 50,
-  alt: 'Lorem Ipsum'
 }
 
 Image.propTypes = {
@@ -52,7 +76,7 @@ class BlogItem extends React.Component {
   render() {
     return (
       <div>
-        <Image src={this.props.src} />
+        <LoremPixelImage src={this.props.image.src} />
         <TextBox>
           {this.props.text},
           by: {this.props.meta.author},
@@ -67,19 +91,24 @@ class BlogItem extends React.Component {
 }
 
 BlogItem.defaultProps = {
-  src: 'http://lorempixel.com/50/50',
+  image: {
+    src: 'http://lorempixel.com/50/50',
+    width: 50,
+    height: 50,
+    alt: 'React - super!'
+  },
   text: 'Untitled Blog',
   id: Date.now(),
   meta: {
     author: 'Me',
-    createdAt: moment().format('lll'),
+    createdAt: moment(0).format('lll'),
     updatedAt: moment().format('lll'),
     likes: 0
   }
 }
 
 BlogItem.propTypes = {
-  src: PropTypes.string,
+  image: PropTypes.shape(LoremPixelImage.propTypes),
   text: PropTypes.string,
   id: PropTypes.number,
   meta: PropTypes.shape({
@@ -98,7 +127,7 @@ class BlogList extends React.Component {
         this.props.items,
         (item) => (
           <li key={item.id}>
-            <BlogItem src={item.src} text={item.text} meta={item.meta} />
+            <BlogItem {...item} />
           </li>
         )
       )
@@ -108,7 +137,9 @@ class BlogList extends React.Component {
 
 const blogItems = [
   {
-    src: 'http://lorempixel.com/200/200',
+    image: {
+      src: 'http://lorempixel.com/200/200'
+    },
     text: 'Blog 1',
     id: 1,
     meta: {
@@ -119,7 +150,9 @@ const blogItems = [
     }
   },
   {
-    src: 'http://lorempixel.com/200/100',
+    image: {
+      src: 'http://lorempixel.com/200/100'
+    },
     text: 'Blog 2',
     id: 2,
     meta: {
@@ -130,7 +163,9 @@ const blogItems = [
     }
   },
   {
-    src: 'http://lorempixel.com/200/50',
+    image: {
+      src: 'http://lorempixel.com/200/50'
+    },
     text: 'Blog 3',
     id: 3,
     meta: {
