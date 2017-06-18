@@ -77,18 +77,14 @@ const TextBox = (props) => (
   DOM.span(null, props.children)
 );
 
+const Like = (props) => (
+  <span>
+    Likes: {props.likes}
+    <button onClick={() => props.incrementLikes(props.id)}>Like</button>
+  </span>
+)
+
 class BlogItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { likes: this.props.meta.likes };
-
-    this.handleClick = bind(this.handleClick, this);
-  }
-
-  handleClick() {
-    this.setState({ likes: this.state.likes + 1 })
-  }
-
   render() {
     return (
       <div>
@@ -98,8 +94,7 @@ class BlogItem extends React.Component {
           by: {this.props.meta.author},
           created at: {this.props.meta.createdAt},
           updated at: {this.props.meta.updatedAt},
-          likes: {this.state.likes}
-          <button onClick={this.handleClick}>Like</button>
+          <Like likes={this.props.meta.likes} incrementLikes={this.props.incrementLikes} id={this.props.id}/>
         </TextBox>
       </div>
     )
@@ -143,7 +138,7 @@ class BlogList extends React.Component {
         this.props.items,
         (item) => (
           <li key={item.id}>
-            <BlogItem {...item} />
+            <BlogItem {...item} incrementLikes={ this.props.incrementLikes }/>
           </li>
         )
       )
@@ -152,9 +147,25 @@ class BlogList extends React.Component {
 }
 
 class BlogPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { posts: this.props.posts };
+    this.incrementLikes = this.incrementLikes.bind(this);
+  }
+
+  incrementLikes(id) {
+    let copy = Object.assign({}, this.state.posts);
+    copy[id-1]["meta"]["likes"]++;
+    this.setState({
+      posts: copy
+    })
+  }
+
   render() {
     return(
-      <BlogList items={ this.props.items }/>
+      <div>
+        <BlogList items={ this.state.posts } incrementLikes={ this.incrementLikes } />
+      </div>
     )
   }
 }
@@ -203,7 +214,7 @@ const blogItems = [
 ];
 
 ReactDOM.render(
-  <BlogPage items={ blogItems } />,
+  <BlogPage posts={ blogItems } />,
   document.getElementById('app')
 );
 </script>
