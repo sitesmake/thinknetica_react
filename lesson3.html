@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Hello react</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.13/c3.css" />
 </head>
 <body>
 <div id="app"></div>
@@ -12,6 +13,8 @@
 <script src="https://cdn.jsdelivr.net/lodash/4/lodash.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.13/c3.js"></script>
 
 <script type="text/babel">
 const { DOM, PropTypes } = React;
@@ -165,6 +168,16 @@ class BlogPage extends React.Component {
     return(
       <div>
         <BlogList items={ this.state.posts } incrementLikes={ this.incrementLikes } />
+        <Chart
+          columns = {
+            _.map(
+              this.props.posts,
+              (item) => (
+                ([item.text, item.meta.likes])
+              )
+            )
+          }
+        />
       </div>
     )
   }
@@ -181,7 +194,7 @@ const blogItems = [
       author: 'Philosopher',
       createdAt: moment().subtract(2000, 'years').format('lll'),
       updatedAt: moment().format('lll'),
-      likes: 2000
+      likes: 10
     }
   },
   {
@@ -194,7 +207,7 @@ const blogItems = [
       author: 'Knight',
       createdAt: moment().subtract(500, 'years').format('lll'),
       updatedAt: moment().format('lll'),
-      likes: 500
+      likes: 50
     }
   },
   {
@@ -207,11 +220,41 @@ const blogItems = [
       author: 'Physicist',
       createdAt: moment().subtract(200, 'years').format('lll'),
       updatedAt: moment().format('lll'),
-      likes: 200
+      likes: 20
     }
   }
 
 ];
+
+class Chart extends React.Component {
+  componentDidMount() {
+      this.chart = c3.generate({
+        bindto: ReactDOM.findDOMNode(this.refs.chart),
+        data: {
+          columns:  this.props.columns,
+          type: 'pie'
+        }
+      })
+  }
+
+  componentWillUnmount() {
+    this.chart.destroy();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps != this.props) {
+      this.chart.load({
+        columns: nextProps.columns
+      })
+    }
+  }
+
+  render() {
+    return (
+      <div ref="chart" />
+    )
+  }
+}
 
 ReactDOM.render(
   <BlogPage posts={ blogItems } />,
