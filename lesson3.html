@@ -21,22 +21,14 @@ const { DOM, PropTypes } = React;
 
 const { bind } = _;
 
-class LoremPixelImage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return(
-      <Image
-        src={this.props.src}
-        width={(Number(this.props.src.split('/')[3]) || this.props.width)}
-        height={(Number(this.props.src.split('/')[4]) || this.props.height)}
-        alt={this.props.alt}
-      />
-    )
-  }
-}
+const LoremPixelImage = ({src, width, height, alt}) => (
+  <Image
+    src={src}
+    width={(Number(src.split('/')[3]) || width)}
+    height={(Number(src.split('/')[4]) || height)}
+    alt={alt}
+  />
+)
 
 LoremPixelImage.defaultProps = {
   src: 'http://lorempixel.com/50/50',
@@ -52,22 +44,14 @@ LoremPixelImage.propTypes = {
   alt: PropTypes.string
 }
 
-class Image extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return(
-      DOM.img({
-        src: this.props.src,
-        width: this.props.width,
-        height: this.props.height,
-        alt: this.props.alt
-      }, null)
-    )
-  }
-}
+const Image = ({src, width, height, alt}) => (
+  DOM.img({
+    src: src,
+    width: width,
+    height: height,
+    alt: alt
+  })
+)
 
 Image.propTypes = {
   src: PropTypes.string,
@@ -87,22 +71,18 @@ const Like = (props) => (
   </span>
 )
 
-class BlogItem extends React.Component {
-  render() {
-    return (
-      <div>
-        <LoremPixelImage src={this.props.image.src} />
-        <TextBox>
-          {this.props.text},
-          by: {this.props.meta.author},
-          created at: {this.props.meta.createdAt},
-          updated at: {this.props.meta.updatedAt},
-          <Like likes={this.props.meta.likes} incrementLikes={this.props.incrementLikes} id={this.props.id}/>
-        </TextBox>
-      </div>
-    )
-  }
-}
+const BlogItem = ({ image, meta, id, incrementLikes, text }) => (
+  <div>
+    <LoremPixelImage src={image.src} />
+    <TextBox>
+      {text},
+      by: {meta.author},
+      created at: {meta.createdAt},
+      updated at: {meta.updatedAt},
+      <Like likes={meta.likes} incrementLikes={incrementLikes} id={id}/>
+    </TextBox>
+  </div>
+)
 
 BlogItem.defaultProps = {
   image: {
@@ -133,21 +113,19 @@ BlogItem.propTypes = {
   })
 }
 
-class BlogList extends React.Component {
-  render() {
-    return DOM.ul(
-      null,
-      _.map(
-        this.props.items,
-        (item) => (
-          <li key={item.id}>
-            <BlogItem {...item} incrementLikes={ this.props.incrementLikes }/>
-          </li>
-        )
+const BlogList = ({items, incrementLikes}) => (
+  DOM.ul(
+    null,
+    _.map(
+      items,
+      (item) => (
+        <li key={item.id}>
+          <BlogItem {...item} incrementLikes={ incrementLikes }/>
+        </li>
       )
     )
-  }
-}
+  )
+)
 
 class BlogPage extends React.Component {
   constructor(props) {
@@ -157,8 +135,13 @@ class BlogPage extends React.Component {
   }
 
   incrementLikes(id) {
-    let copy = Object.assign({}, this.state.posts);
-    copy[id-1]["meta"]["likes"]++;
+    // let copy = Object.assign({}, this.state.posts);
+    let copy = _.cloneDeep(this.state.posts);
+
+    const index = copy.findIndex(item => item.id == id)
+
+    copy[index]["meta"]["likes"]++;
+
     this.setState({
       posts: copy
     })
