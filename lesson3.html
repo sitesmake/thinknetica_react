@@ -45,12 +45,7 @@ LoremPixelImage.propTypes = {
 }
 
 const Image = ({src, width, height, alt}) => (
-  DOM.img({
-    src: src,
-    width: width,
-    height: height,
-    alt: alt
-  })
+  DOM.img({src, width, height, alt})
 )
 
 Image.propTypes = {
@@ -154,7 +149,7 @@ class BlogPage extends React.Component {
         <Chart
           columns = {
             _.map(
-              this.props.posts,
+              this.state.posts,
               (item) => (
                 ([item.text, item.meta.likes])
               )
