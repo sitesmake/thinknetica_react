@@ -21,5 +21,11 @@
     "eslint-plugin-destructuring": "^2.1.0",
     "eslint-plugin-import": "^2.6.0",
     "eslint-plugin-react": "^7.1.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
