@@ -1896,7 +1896,7 @@ function loadLocale(name) {
             module && module.exports) {
         try {
             oldLocale = globalLocale._abbr;
-            __webpack_require__(307)("./" + name);
+            __webpack_require__(304)("./" + name);
             // because defineLocale currently also sets the global locale, we
             // want to undo that for lazy loaded locales
             getSetGlobalLocale(oldLocale);
@@ -5996,6 +5996,16 @@ module.exports = ReactUpdates;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(18);
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -6262,16 +6272,6 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
   }
 }
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(18);
-
 
 /***/ }),
 /* 15 */
@@ -7867,7 +7867,7 @@ module.exports = EventPluginHub;
 
 
 
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 var getEventTarget = __webpack_require__(37);
 
@@ -25344,7 +25344,7 @@ module.exports = __webpack_require__(200);
 "use strict";
 
 
-var _react = __webpack_require__(14);
+var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28630,7 +28630,7 @@ module.exports = FallbackCompositionState;
 
 
 
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 /**
  * @interface Event
@@ -28671,7 +28671,7 @@ module.exports = SyntheticCompositionEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 /**
  * @interface Event
@@ -28718,7 +28718,7 @@ var EventPropagators = __webpack_require__(22);
 var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactUpdates = __webpack_require__(12);
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 var inputValueTracking = __webpack_require__(64);
 var getEventTarget = __webpack_require__(37);
@@ -36520,7 +36520,7 @@ var EventPropagators = __webpack_require__(22);
 var ExecutionEnvironment = __webpack_require__(7);
 var ReactDOMComponentTree = __webpack_require__(6);
 var ReactInputSelection = __webpack_require__(79);
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 var getActiveElement = __webpack_require__(80);
 var isTextInputElement = __webpack_require__(65);
@@ -36717,7 +36717,7 @@ var EventPropagators = __webpack_require__(22);
 var ReactDOMComponentTree = __webpack_require__(6);
 var SyntheticAnimationEvent = __webpack_require__(283);
 var SyntheticClipboardEvent = __webpack_require__(284);
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 var SyntheticFocusEvent = __webpack_require__(285);
 var SyntheticKeyboardEvent = __webpack_require__(286);
 var SyntheticMouseEvent = __webpack_require__(30);
@@ -36941,7 +36941,7 @@ module.exports = SimpleEventPlugin;
 
 
 
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 /**
  * @interface Event
@@ -36985,7 +36985,7 @@ module.exports = SyntheticAnimationEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 /**
  * @interface Event
@@ -37366,7 +37366,7 @@ module.exports = SyntheticTouchEvent;
 
 
 
-var SyntheticEvent = __webpack_require__(13);
+var SyntheticEvent = __webpack_require__(14);
 
 /**
  * @interface Event
@@ -37999,18 +37999,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(14);
+var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _BlogPage = __webpack_require__(303);
+var _items = __webpack_require__(303);
+
+var _BlogPage = __webpack_require__(305);
 
 var _BlogPage2 = _interopRequireDefault(_BlogPage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return _react2.default.createElement(_BlogPage2.default, null);
+  return _react2.default.createElement(_BlogPage2.default, { posts: _items.items });
 };
 
 exports.default = App;
@@ -38025,82 +38027,14 @@ exports.default = App;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.items = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _moment = __webpack_require__(0);
 
-var _react = __webpack_require__(14);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _items = __webpack_require__(304);
-
-var _BlogList = __webpack_require__(305);
-
-var _BlogList2 = _interopRequireDefault(_BlogList);
+var _moment2 = _interopRequireDefault(_moment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BlogPage = function (_React$Component) {
-  _inherits(BlogPage, _React$Component);
-
-  function BlogPage(props) {
-    _classCallCheck(this, BlogPage);
-
-    var _this = _possibleConstructorReturn(this, (BlogPage.__proto__ || Object.getPrototypeOf(BlogPage)).call(this, props));
-
-    _this.state = { posts: _this.props.posts };
-    _this.incrementLikes = _this.incrementLikes.bind(_this);
-    return _this;
-  }
-
-  _createClass(BlogPage, [{
-    key: 'incrementLikes',
-    value: function incrementLikes(id) {
-      // let copy = Object.assign({}, this.state.posts);
-      var copy = _.cloneDeep(this.state.posts);
-
-      var index = copy.findIndex(function (item) {
-        return item.id == id;
-      });
-
-      copy[index]["meta"]["likes"]++;
-
-      this.setState({
-        posts: copy
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_BlogList2.default, { items: this.state.posts, incrementLikes: this.incrementLikes })
-      );
-    }
-  }]);
-
-  return BlogPage;
-}(_react2.default.Component);
-
-exports.default = BlogPage;
-
-/***/ }),
-/* 304 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 var items = exports.items = [{
   image: {
     src: 'http://lorempixel.com/200/200'
@@ -38109,8 +38043,8 @@ var items = exports.items = [{
   id: 1,
   meta: {
     author: 'Philosopher',
-    createdAt: moment().subtract(2000, 'years').format('lll'),
-    updatedAt: moment().format('lll'),
+    createdAt: (0, _moment2.default)().subtract(2000, 'years').format('lll'),
+    updatedAt: (0, _moment2.default)().format('lll'),
     likes: 10
   }
 }, {
@@ -38121,8 +38055,8 @@ var items = exports.items = [{
   id: 2,
   meta: {
     author: 'Knight',
-    createdAt: moment().subtract(500, 'years').format('lll'),
-    updatedAt: moment().format('lll'),
+    createdAt: (0, _moment2.default)().subtract(500, 'years').format('lll'),
+    updatedAt: (0, _moment2.default)().format('lll'),
     likes: 50
   }
 }, {
@@ -38133,151 +38067,16 @@ var items = exports.items = [{
   id: 3,
   meta: {
     author: 'Physicist',
-    createdAt: moment().subtract(200, 'years').format('lll'),
-    updatedAt: moment().format('lll'),
+    createdAt: (0, _moment2.default)().subtract(200, 'years').format('lll'),
+    updatedAt: (0, _moment2.default)().format('lll'),
     likes: 20
   }
 }];
 
-/***/ }),
-/* 305 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(14);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _BlogItem = __webpack_require__(306);
-
-var _BlogItem2 = _interopRequireDefault(_BlogItem);
-
-var _lodash = __webpack_require__(311);
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var DOM = _react2.default.DOM;
-
-var BlogList = function BlogList(_ref) {
-  var items = _ref.items,
-      incrementLikes = _ref.incrementLikes;
-  return DOM.ul(null, _lodash2.default.map(items, function (item) {
-    return _react2.default.createElement(
-      'li',
-      { key: item.id },
-      _react2.default.createElement(_BlogItem2.default, _extends({}, item, { incrementLikes: incrementLikes }))
-    );
-  }));
-};
-
-exports.default = BlogList;
+exports.default = items;
 
 /***/ }),
-/* 306 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(14);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _moment = __webpack_require__(0);
-
-var _moment2 = _interopRequireDefault(_moment);
-
-var _LoremPixelImage = __webpack_require__(308);
-
-var _LoremPixelImage2 = _interopRequireDefault(_LoremPixelImage);
-
-var _TextBox = __webpack_require__(309);
-
-var _TextBox2 = _interopRequireDefault(_TextBox);
-
-var _Like = __webpack_require__(310);
-
-var _Like2 = _interopRequireDefault(_Like);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var PropTypes = _react2.default.PropTypes;
-
-
-var BlogItem = function BlogItem(_ref) {
-  var image = _ref.image,
-      meta = _ref.meta,
-      id = _ref.id,
-      incrementLikes = _ref.incrementLikes,
-      text = _ref.text;
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(_LoremPixelImage2.default, { src: image.src }),
-    _react2.default.createElement(
-      _TextBox2.default,
-      null,
-      text,
-      ', by: ',
-      meta.author,
-      ', created at: ',
-      meta.createdAt,
-      ', updated at: ',
-      meta.updatedAt,
-      ',',
-      _react2.default.createElement(_Like2.default, { likes: meta.likes, incrementLikes: incrementLikes, id: id })
-    )
-  );
-};
-
-BlogItem.defaultProps = {
-  image: {
-    src: 'http://lorempixel.com/50/50',
-    width: 50,
-    height: 50,
-    alt: 'React - super!'
-  },
-  text: 'Untitled Blog',
-  id: Date.now(),
-  meta: {
-    author: 'Me',
-    createdAt: (0, _moment2.default)(0).format('lll'),
-    updatedAt: (0, _moment2.default)().format('lll'),
-    likes: 0
-  }
-};
-
-BlogItem.propTypes = {
-  image: PropTypes.shape(_LoremPixelImage2.default.propTypes),
-  text: PropTypes.string,
-  id: PropTypes.number,
-  incrementLikes: PropTypes.func,
-  meta: PropTypes.shape({
-    author: PropTypes.string,
-    createdAt: PropTypes.string,
-    updatedAt: PropTypes.string,
-    likes: PropTypes.number
-  })
-};
-
-exports.default = BlogItem;
-
-/***/ }),
-/* 307 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -38526,7 +38325,218 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 307;
+webpackContext.id = 304;
+
+/***/ }),
+/* 305 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(13);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _BlogList = __webpack_require__(306);
+
+var _BlogList2 = _interopRequireDefault(_BlogList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BlogPage = function (_React$Component) {
+  _inherits(BlogPage, _React$Component);
+
+  function BlogPage(props) {
+    _classCallCheck(this, BlogPage);
+
+    var _this = _possibleConstructorReturn(this, (BlogPage.__proto__ || Object.getPrototypeOf(BlogPage)).call(this, props));
+
+    _this.state = { posts: _this.props.posts };
+    _this.incrementLikes = _this.incrementLikes.bind(_this);
+    return _this;
+  }
+
+  _createClass(BlogPage, [{
+    key: 'incrementLikes',
+    value: function incrementLikes(id) {
+      // let copy = Object.assign({}, this.state.posts);
+      var copy = _.cloneDeep(this.state.posts);
+
+      var index = copy.findIndex(function (item) {
+        return item.id == id;
+      });
+
+      copy[index]["meta"]["likes"]++;
+
+      this.setState({
+        posts: copy
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_BlogList2.default, { items: this.state.posts, incrementLikes: this.incrementLikes })
+      );
+    }
+  }]);
+
+  return BlogPage;
+}(_react2.default.Component);
+
+exports.default = BlogPage;
+
+/***/ }),
+/* 306 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(13);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _BlogItem = __webpack_require__(307);
+
+var _BlogItem2 = _interopRequireDefault(_BlogItem);
+
+var _lodash = __webpack_require__(312);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DOM = _react2.default.DOM;
+
+var BlogList = function BlogList(_ref) {
+  var items = _ref.items,
+      incrementLikes = _ref.incrementLikes;
+  return DOM.ul(null, _lodash2.default.map(items, function (item) {
+    return _react2.default.createElement(
+      'li',
+      { key: item.id },
+      _react2.default.createElement(_BlogItem2.default, _extends({}, item, { incrementLikes: incrementLikes }))
+    );
+  }));
+};
+
+exports.default = BlogList;
+
+/***/ }),
+/* 307 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(13);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _moment = __webpack_require__(0);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _LoremPixelImage = __webpack_require__(308);
+
+var _LoremPixelImage2 = _interopRequireDefault(_LoremPixelImage);
+
+var _TextBox = __webpack_require__(310);
+
+var _TextBox2 = _interopRequireDefault(_TextBox);
+
+var _Like = __webpack_require__(311);
+
+var _Like2 = _interopRequireDefault(_Like);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PropTypes = _react2.default.PropTypes;
+
+
+var BlogItem = function BlogItem(_ref) {
+  var image = _ref.image,
+      meta = _ref.meta,
+      id = _ref.id,
+      incrementLikes = _ref.incrementLikes,
+      text = _ref.text;
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_LoremPixelImage2.default, { src: image.src }),
+    _react2.default.createElement(
+      _TextBox2.default,
+      null,
+      text,
+      ', by: ',
+      meta.author,
+      ', created at: ',
+      meta.createdAt,
+      ', updated at: ',
+      meta.updatedAt,
+      ',',
+      _react2.default.createElement(_Like2.default, { likes: meta.likes, incrementLikes: incrementLikes, id: id })
+    )
+  );
+};
+
+BlogItem.defaultProps = {
+  image: {
+    src: 'http://lorempixel.com/50/50',
+    width: 50,
+    height: 50,
+    alt: 'React - super!'
+  },
+  text: 'Untitled Blog',
+  id: Date.now(),
+  meta: {
+    author: 'Me',
+    createdAt: (0, _moment2.default)(0).format('lll'),
+    updatedAt: (0, _moment2.default)().format('lll'),
+    likes: 0
+  }
+};
+
+BlogItem.propTypes = {
+  image: PropTypes.shape(_LoremPixelImage2.default.propTypes),
+  text: PropTypes.string,
+  id: PropTypes.number,
+  incrementLikes: PropTypes.func,
+  meta: PropTypes.shape({
+    author: PropTypes.string,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
+    likes: PropTypes.number
+  })
+};
+
+exports.default = BlogItem;
 
 /***/ }),
 /* 308 */
@@ -38539,9 +38549,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(14);
+var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Image = __webpack_require__(309);
+
+var _Image2 = _interopRequireDefault(_Image);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38553,7 +38567,7 @@ var LoremPixelImage = function LoremPixelImage(_ref) {
       width = _ref.width,
       height = _ref.height,
       alt = _ref.alt;
-  return _react2.default.createElement(Image, {
+  return _react2.default.createElement(_Image2.default, {
     src: src,
     width: Number(src.split('/')[3]) || width,
     height: Number(src.split('/')[4]) || height,
@@ -38588,7 +38602,45 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(14);
+var _react = __webpack_require__(13);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DOM = _react2.default.DOM,
+    PropTypes = _react2.default.PropTypes;
+
+
+var Image = function Image(_ref) {
+  var src = _ref.src,
+      width = _ref.width,
+      height = _ref.height,
+      alt = _ref.alt;
+  return DOM.img({ src: src, width: width, height: height, alt: alt });
+};
+
+Image.propTypes = {
+  src: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  alt: PropTypes.string
+};
+
+exports.default = Image;
+
+/***/ }),
+/* 310 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -38604,7 +38656,7 @@ var TextBox = function TextBox(props) {
 exports.default = TextBox;
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38614,7 +38666,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(14);
+var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -38648,7 +38700,7 @@ Like.propTypes = {
 exports.default = Like;
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -55737,10 +55789,10 @@ exports.default = Like;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(312), __webpack_require__(83)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(313), __webpack_require__(83)(module)))
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports) {
 
 var g;

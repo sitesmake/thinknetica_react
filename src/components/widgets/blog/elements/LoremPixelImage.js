@@ -2,6 +2,8 @@ import React from 'react';
 
 const { PropTypes }  = React;
 
+import Image from './Image';
+
 const LoremPixelImage = ({src, width, height, alt}) => (
   <Image
     src={src}

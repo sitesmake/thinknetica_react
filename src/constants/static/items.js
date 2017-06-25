@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const items = [
   {
     image: {
@@ -40,3 +42,5 @@ export const items = [
   }
 
 ];
+
+export default items;
