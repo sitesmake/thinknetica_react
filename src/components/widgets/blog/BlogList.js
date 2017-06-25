@@ -1,3 +1,11 @@
+import React from 'react';
+
+import BlogItem from './BlogItem';
+
+import _ from 'lo-dash';
+
+const DOM  = React.DOM;
+
 const BlogList = ({items, incrementLikes}) => (
   DOM.ul(
     null,
@@ -10,4 +18,6 @@ const BlogList = ({items, incrementLikes}) => (
       )
     )
   )
-)
+);
+
+export default BlogList;

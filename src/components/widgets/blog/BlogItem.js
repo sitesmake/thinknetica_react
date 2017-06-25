@@ -1,3 +1,12 @@
+import React from 'react';
+import moment from 'moment';
+
+const { PropTypes }  = React;
+
+import LoremPixelImage from './elements/LoremPixelImage';
+import TextBox from './elements/TextBox';
+import Like from './elements/Like';
+
 const BlogItem = ({ image, meta, id, incrementLikes, text }) => (
   <div>
     <LoremPixelImage src={image.src} />
@@ -9,7 +18,7 @@ const BlogItem = ({ image, meta, id, incrementLikes, text }) => (
       <Like likes={meta.likes} incrementLikes={incrementLikes} id={id}/>
     </TextBox>
   </div>
-)
+);
 
 BlogItem.defaultProps = {
   image: {
@@ -26,16 +35,19 @@ BlogItem.defaultProps = {
     updatedAt: moment().format('lll'),
     likes: 0
   }
-}
+};
 
 BlogItem.propTypes = {
   image: PropTypes.shape(LoremPixelImage.propTypes),
   text: PropTypes.string,
   id: PropTypes.number,
+  incrementLikes: PropTypes.func,
   meta: PropTypes.shape({
     author: PropTypes.string,
     createdAt: PropTypes.string,
     updatedAt: PropTypes.string,
     likes: PropTypes.number
   })
-}
+};
+
+export default BlogItem;
