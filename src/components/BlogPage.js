@@ -2,7 +2,7 @@ import React from 'react';
 
 import { items as staticItems } from 'constants/static/items';
 
-import BlogList from 'components/widgets/blog/list';
+import BlogList from 'components/widgets/blog/BlogList';
 
 class BlogPage extends React.Component {
   constructor(props) {

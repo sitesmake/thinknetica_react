@@ -1,10 +1,6 @@
-/* eslint-disable */
+// const webpack = require('webpack');
 
-var path = require('path');
-
-var webpack = require('webpack');
-
-var root = path.join(process.cwd(), 'src');
+const path = require('path');
 
 module.exports = {
   entry: [
@@ -28,6 +24,9 @@ module.exports = {
   },
 
   resolve: {
-    root: root
+    modules: [
+      path.join(process.cwd(), 'src'),
+      'node_modules'
+    ]
   }
 };

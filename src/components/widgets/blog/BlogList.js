@@ -2,7 +2,7 @@ import React from 'react';
 
 import BlogItem from './BlogItem';
 
-import _ from 'lo-dash';
+import _ from 'lodash';
 
 const DOM  = React.DOM;
 
