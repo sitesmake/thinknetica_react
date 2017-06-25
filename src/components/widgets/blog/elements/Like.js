@@ -2,12 +2,10 @@ import React from 'react';
 
 const { PropTypes }  = React;
 
-import { Button } from 'semantic-ui-react';
-
 const Like = (props) => (
   <span>
     Likes: {props.likes}
-    <Button onClick={() => props.incrementLikes(props.id)}>Like</Button>
+    <button onClick={() => props.incrementLikes(props.id)}>Like</button>
   </span>
 );
 
