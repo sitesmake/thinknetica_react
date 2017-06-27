@@ -15,7 +15,9 @@ const BlogItem = ({ image, meta, id, incrementLikes, text }) => (
       by: {meta.author},
       created at: {meta.createdAt},
       updated at: {meta.updatedAt},
-      <Like likes={meta.likes} incrementLikes={incrementLikes} id={id}/>
+      <Like likes={meta.likes} incrementLikes={() =>
+        incrementLikes(id)
+      } id={id} />
     </TextBox>
   </div>
 );

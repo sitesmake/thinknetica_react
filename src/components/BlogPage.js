@@ -10,7 +10,7 @@ class BlogPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { posts: this.props.posts };
-    this.incrementLikes = this.incrementLikes.bind(this);
+    this.incrementLikes = _.bind(this.incrementLikes, this);
   }
 
   incrementLikes(id) {

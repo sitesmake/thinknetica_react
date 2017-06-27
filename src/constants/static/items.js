@@ -9,7 +9,8 @@ export const items = [
     id: 1,
     meta: {
       author: 'Philosopher',
-      createdAt: moment().subtract(2000, 'years').format('lll'),
+      createdAt: moment().subtract(2000, 'years')
+        .format('lll'),
       updatedAt: moment().format('lll'),
       likes: 10
     }
@@ -22,7 +23,8 @@ export const items = [
     id: 2,
     meta: {
       author: 'Knight',
-      createdAt: moment().subtract(500, 'years').format('lll'),
+      createdAt: moment().subtract(500, 'years')
+        .format('lll'),
       updatedAt: moment().format('lll'),
       likes: 50
     }
@@ -35,7 +37,8 @@ export const items = [
     id: 3,
     meta: {
       author: 'Physicist',
-      createdAt: moment().subtract(200, 'years').format('lll'),
+      createdAt: moment().subtract(200, 'years')
+        .format('lll'),
       updatedAt: moment().format('lll'),
       likes: 20
     }
