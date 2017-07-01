@@ -6,13 +6,28 @@ import _ from 'lodash';
 
 const { PropTypes }  = React;
 
-import { items } from 'constants/static/items';
+// import { items } from 'constants/static/items';
+
+import request from 'superagent';
 
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: items };
+    // this.state = { posts: items };
+    this.state = { posts: [] };
     this.incrementLikes = _.bind(this.incrementLikes, this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3001',
+      {},
+      (err, res) => this.setState({ posts: res.body })
+    );
   }
 
   incrementLikes(id) {
