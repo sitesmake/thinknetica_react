@@ -6,10 +6,12 @@ import _ from 'lodash';
 
 const { PropTypes }  = React;
 
+import { items } from 'constants/static/items';
+
 class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: this.props.posts };
+    this.state = { posts: items };
     this.incrementLikes = _.bind(this.incrementLikes, this);
   }
 
