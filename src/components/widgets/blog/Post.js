@@ -16,7 +16,7 @@ class Post extends React.Component {
     request.get(
       'http://localhost:3001',
       {},
-      (err, res) => this.setState({ items })
+      () => this.setState({ items })
     );
   }
 
