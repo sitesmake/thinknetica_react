@@ -25,8 +25,10 @@ class Post extends React.Component {
   }
 
   render() {
+    const items = this.state.items;
+    const index = items.findIndex(item => item.id == this.props.params.id);
     return (
-      <BlogItem {...(this.state.items[this.props.params.id - 1])} />
+      <BlogItem {...(items[index])} />
     );
   }
 }
