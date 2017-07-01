@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 
 import { Segment, Header, Container } from 'semantic-ui-react';
 
+import Link from 'components/elements/link';
+
 const MainLayout = ({ children }) => (
   <Container>
     <Logo />
@@ -18,7 +20,11 @@ export default MainLayout;
 
 const Logo = () => (
   <Segment>
-    <Header>Thinknetica blog</Header>
+    <Header>
+      <Link to='/'>
+        Thinknetica blog
+      </Link>
+    </Header>
   </Segment>
 );
 

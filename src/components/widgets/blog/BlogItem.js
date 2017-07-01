@@ -6,12 +6,13 @@ const { PropTypes }  = React;
 import LoremPixelImage from './elements/LoremPixelImage';
 import TextBox from './elements/TextBox';
 import Like from './elements/Like';
+import Link from 'components/elements/Link';
 
 const BlogItem = ({ image, meta, id, incrementLikes, text }) => (
   <div>
     <LoremPixelImage src={image.src} />
     <TextBox>
-      {text},
+      <Link to={`/posts/${id}`}>{text}</Link>,
       by: {meta.author},
       created at: {meta.createdAt},
       updated at: {meta.updatedAt},
