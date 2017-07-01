@@ -8,11 +8,13 @@ import TextBox from './elements/TextBox';
 import Like from './elements/Like';
 import Link from 'components/elements/Link';
 
+import { postsPath } from 'helpers/routes';
+
 const BlogItem = ({ image, meta, id, incrementLikes, text }) => (
   <div>
     <LoremPixelImage src={image.src} />
     <TextBox>
-      <Link to={`/posts/${id}`}>{text}</Link>,
+      <Link to={postsPath(id)}>{text}</Link>,
       by: {meta.author},
       created at: {meta.createdAt},
       updated at: {meta.updatedAt},

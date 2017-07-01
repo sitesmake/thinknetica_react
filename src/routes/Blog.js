@@ -1,5 +1,7 @@
 import MainLayout from 'components/layouts/MainLayout';
 
+import { postsPath } from 'helpers/routes';
+
 import BlogPage from 'components/BlogPage';
 import Post from 'components/widgets/blog/Post';
 
@@ -9,7 +11,7 @@ const Index = {
 };
 
 const PostRoute = {
-  path: '/posts/:id',
+  path: postsPath(),
   component: Post
 };
 
