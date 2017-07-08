@@ -5,9 +5,11 @@ const { PropTypes }  = React;
 
 import LoremPixelImage from './elements/LoremPixelImage';
 import TextBox from './elements/TextBox';
+import GoBackButton from './elements/GoBackButton';
 
 const Post = ({ image, meta, id, text }) => (
   <div>
+    <GoBackButton />
     <h1>The Post by {meta.author}</h1>
     <LoremPixelImage {...image} />
     <TextBox>
