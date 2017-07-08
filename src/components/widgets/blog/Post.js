@@ -1,40 +1,50 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import moment from 'moment';
 
-import { items } from 'constants/static/items';
+const { PropTypes }  = React;
 
-import BlogItem from './BlogItem';
+import LoremPixelImage from './elements/LoremPixelImage';
+import TextBox from './elements/TextBox';
 
-import request from 'superagent';
+const Post = ({ image, meta, id, text }) => (
+  <div>
+    <h1>The Post by {meta.author}</h1>
+    <LoremPixelImage {...image} />
+    <TextBox>
+      text: {text},
+      created at: {meta.createdAt},
+      updated at: {meta.updatedAt},
+      record: #{id}
+    </TextBox>
+  </div>
+);
 
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { items: [] };
+Post.defaultProps = {
+  image: {
+    src: 'http://lorempixel.com/50/50',
+    width: 50,
+    height: 50,
+    alt: 'React - super!'
+  },
+  text: 'Untitled Blog',
+  id: Date.now(),
+  meta: {
+    author: 'Me',
+    createdAt: moment(0).format('lll'),
+    updatedAt: moment().format('lll')
   }
-
-  fetchPosts() {
-    request.get(
-      'http://localhost:3001',
-      {},
-      () => this.setState({ items })
-    );
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  render() {
-    const items = this.state.items;
-    const index = items.findIndex(item => item.id == this.props.params.id);
-    return (
-      <BlogItem {...(items[index])} />
-    );
-  }
-}
+};
 
 Post.propTypes = {
-  params: PropTypes.object
+  image: PropTypes.shape(LoremPixelImage.propTypes),
+  text: PropTypes.string,
+  id: PropTypes.number,
+  incrementLikes: PropTypes.func,
+  meta: PropTypes.shape({
+    author: PropTypes.string,
+    createdAt: PropTypes.string,
+    updatedAt: PropTypes.string
+  })
 };
 
 export default Post;

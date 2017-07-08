@@ -1,24 +1,41 @@
+// import React from 'react';
+
 import MainLayout from 'components/layouts/MainLayout';
 
-import { postsPath } from 'helpers/routes';
+import { postPath } from 'helpers/routes';
 
-import BlogPage from 'components/BlogPage';
-import Post from 'components/widgets/blog/Post';
+import BlogIndex from 'components/BlogIndex';
+import BlogShow from 'components/BlogShow';
+// import Post from 'components/widgets/blog/Post';
+
+// const Hello = () => (<h1>Hello</h1>);
+//
+// const World = {
+//   path: '/hello',
+//   component: Hello
+// };
 
 const Index = {
   path: '/',
-  component: BlogPage
+  component: BlogIndex
 };
 
-const PostRoute = {
-  path: postsPath(),
-  component: Post
+const Show = {
+  path: postPath(),
+  component: BlogShow
 };
+
+// const PostRoute = {
+//   path: postsPath(),
+//   component: Post
+// };
 
 export default {
   component: MainLayout,
   childRoutes: [
     Index,
-    PostRoute
+    // PostRoute,
+    // World,
+    Show
   ]
 };

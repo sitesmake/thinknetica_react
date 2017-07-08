@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 import { Segment, Header, Container, Button } from 'semantic-ui-react';
 
-import Link from 'components/elements/link';
+import Link from 'components/elements/Link';
 
 import history from 'helpers/history';
 
